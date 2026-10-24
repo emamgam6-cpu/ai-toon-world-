@@ -1,19 +1,18 @@
 const videos=[
-{title:"AI Toon World 01",channel:"AI Toon World",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
-{title:"AI Toon World 02",channel:"AI Toon World",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
-{title:"Drama Club 01",channel:"Drama Club",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
-{title:"Drama Club 02",channel:"Drama Club",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+{title:"AI Toon World 01",channel:"Flag Country Area",url:"https://youtu.be/bVxuiqEQyPs"},
+{title:"AI Toon World 02",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+{title:"Drama Club 01",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+{title:"Drama Club 02",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
 {title:"Flag Country 01",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
 {title:"Flag Country 02",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
-{title:"Video 07",channel:"AI Toon World",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
-{title:"Video 08",channel:"Drama Club",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+{title:"Video 07",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+{title:"Video 08",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
 {title:"Video 09",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
-{title:"Video 10",channel:"AI Toon World",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
-{title:"Video 11",channel:"Drama Club",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
-{title:"Video 12",channel:"AI Toon World",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}];
+{title:"Video 10",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+{title:"Video 11",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"},
+{title:"Video 12",channel:"Flag Country Area",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}];
 const channels=[
-{name:"AI Toon World",handle:"@AIToonWorld",icon:"AI",url:"https://www.youtube.com/"},
-{name:"Flag Country Area",handle:"@flagcountryarea",icon:"FC",url:"https://youtube.com/@flagcountryarea?si=OnhGSL46fyZq3FTn"}];
+{name:"Flag Country Area",handle:"@flagcountryarea",icon:"FC",url:"https://youtube.com/@flagcountryarea?si=xJlHEV9NLfO-wkel"}];
 
 function idFromUrl(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);return u.searchParams.get("v")||""}catch(e){return""}}
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
