@@ -33,3 +33,7 @@ For best desktop viewing, use a large monitor and select 6, 9, or 12 screens.
 - Responsive AdSense placeholder areas
 
 Replace AdSense placeholders only with the official code supplied after Google approves your site.
+
+
+## Normal YouTube playback
+This build does not use autoplay loops or automated playback. Visitors start videos themselves in the YouTube player, so viewing remains normal and user-initiated.

@@ -22,23 +22,13 @@ function safe(url){try{const u=new URL(url);return["http:","https:"].includes(u.
 function renderWall(){
  const count=Number(document.getElementById("screenCount").value),wall=document.getElementById("videoWall");let out="";
  for(let i=0;i<count;i++){const v=videos[i%videos.length],id=idFromUrl(v.url);
-  out+=`<article class="screen"><iframe id="player${i}" src="https://www.youtube.com/embed/${encodeURIComponent(id)}?enablejsapi=1&autoplay=1&mute=1&playsinline=1&rel=0" title="${esc(v.title)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe><div class="screen-info"><span>${esc(v.title)} · ${esc(v.channel)}</span><button onclick="toggleMute(${i},this)" title="Toggle sound">🔇</button></div></article>`;
+  out+=`<article class="screen"><iframe id="player${i}" src="https://www.youtube.com/embed/${encodeURIComponent(id)}?playsinline=1&rel=0" title="${esc(v.title)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe><div class="screen-info"><span>${esc(v.title)} · ${esc(v.channel)}</span><a href="${safe(v.url)}" target="_blank" rel="noopener">YouTube ↗</a></div></article>`;
  }
  wall.innerHTML=out;
 }
 
 function post(i,func,args=[]){const f=document.getElementById("player"+i);if(f)f.contentWindow.postMessage(JSON.stringify({event:"command",func,args}),"*")}
-function startAll(){document.querySelectorAll(".screen iframe").forEach((f,i)=>post(i,"mute"));document.querySelectorAll(".screen iframe").forEach((f,i)=>post(i,"playVideo"))}
-function stopAll(){document.querySelectorAll(".screen iframe").forEach((f,i)=>post(i,"pauseVideo"))}
-function toggleMute(i,btn){const muted=btn.dataset.muted!=="false";if(muted){post(i,"unMute");btn.dataset.muted="false";btn.textContent="🔊"}else{post(i,"mute");btn.dataset.muted="true";btn.textContent="🔇"}}
-function toggleMenu(){
-  const nav=document.querySelector(".nav nav");
-  const btn=document.getElementById("menuBtn");
-  const open=nav.classList.toggle("mobile");
-  btn.setAttribute("aria-expanded",String(open));
-  btn.setAttribute("aria-label",open?"Close menu":"Open menu");
-  btn.textContent=open?"✕":"☰";
-}
+
 document.querySelectorAll(".nav nav a").forEach(a=>a.addEventListener("click",()=>{
   const nav=document.querySelector(".nav nav");
   const btn=document.getElementById("menuBtn");
@@ -73,7 +63,7 @@ function openYoutubeLink(){
   const id=getYoutubeId(input.value);
   error.textContent='';
   if(!id){ wrap.hidden=true; error.textContent='Please paste a valid YouTube video link.'; return; }
-  frame.src='https://www.youtube.com/embed/'+encodeURIComponent(id)+'?autoplay=1&mute=1&playsinline=1&rel=0';
+  frame.src='https://www.youtube.com/embed/'+encodeURIComponent(id)+'?playsinline=1&rel=0';
   wrap.hidden=false;
   wrap.scrollIntoView({behavior:'smooth',block:'center'});
 }

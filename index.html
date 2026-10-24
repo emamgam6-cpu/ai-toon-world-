@@ -3,7 +3,7 @@
 <title>AI Toon World | Multi Screen Video Wall</title><link rel="stylesheet" href="style.css"></head>
 <body>
 <header class="nav"><a class="brand" href="#home">AI <span>Toon</span> World</a><nav><a href="#home">Home</a><a href="#watch">Watch Link</a><a href="https://youtube.com/@flagcountryarea?si=OnhGSL46fyZq3FTn" target="_blank" rel="noopener">Subscribe</a><a href="#wall">Video Wall</a><a href="#channels">Channels</a></nav><button class="menu" id="menuBtn" aria-label="Open menu" aria-expanded="false" onclick="toggleMenu()">☰</button></header>
-<section id="home" class="hero"><div><p class="eyebrow">DESKTOP MULTI-SCREEN VIDEO WALL</p><h1>Watch multiple<br><span>screens at once.</span></h1><p class="lead">All screens start muted. Turn on sound only for the screen you want.</p><div class="actions"><a class="btn primary" href="#wall">Open Video Wall</a><button class="btn ghost" onclick="startAll()">▶ Start All</button></div></div><div class="hero-art"><div class="glow"></div><div class="monitor">▶</div></div></section>
+<section id="home" class="hero"><div><p class="eyebrow">DESKTOP MULTI-SCREEN VIDEO WALL</p><h1>Watch multiple<br><span>screens at once.</span></h1><p class="lead">Videos are shown in a responsive player grid. Start playback yourself on any video.</p><div class="actions"><a class="btn primary" href="#wall">Open Video Wall</a></div></div><div class="hero-art"><div class="glow"></div><div class="monitor">▶</div></div></section>
 
 <section class="subscribe-banner">
   <div class="subscribe-copy">
@@ -32,7 +32,7 @@
     <iframe id="singleVideo" title="YouTube video player" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>
   </div>
 </section>
-<section id="wall" class="wall-section"><div class="wall-head"><div><p class="eyebrow">MULTI SCREEN</p><h2>Video Wall</h2></div><div class="controls"><label>Screens <select id="screenCount" onchange="renderWall()"><option>4</option><option>6</option><option selected>9</option><option>12</option></select></label><button onclick="startAll()" class="control-btn">▶ Start All</button><button onclick="stopAll()" class="control-btn stop">■ Stop All</button></div></div><div id="videoWall" class="video-wall"></div><p class="note">All players load muted. Use the 🔊 button on a tile to request sound for that screen.</p></section>
+<section id="wall" class="wall-section"><div class="wall-head"><div><p class="eyebrow">MULTI SCREEN</p><h2>Video Wall</h2></div><div class="controls"><label>Screens <select id="screenCount" onchange="renderWall()"><option>4</option><option>6</option><option selected>9</option><option>12</option></select></label><button onclick="stopAll()" class="control-btn stop">■ Stop All</button></div></div><div id="videoWall" class="video-wall"></div><p class="note">Click Play on a video to watch it normally. Playback is controlled by you.</p></section>
 <section id="channels" class="section"><p class="eyebrow">CHANNELS</p><h2>YouTube Channels</h2><div id="channelGrid" class="channel-grid"></div></section>
 <footer>© 2026 AI Toon World · Multi Screen Video Wall</footer><script src="script.js"></script><div class="ad-slot" aria-label="Advertisement"><span>ADVERTISEMENT</span><div>Ad space — Google AdSense code can be placed here after approval.</div></div>
 </body></html>
