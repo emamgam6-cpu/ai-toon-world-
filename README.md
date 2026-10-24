@@ -21,3 +21,15 @@ To customize:
 4. Upload the files to GitHub Pages.
 
 For best desktop viewing, use a large monitor and select 6, 9, or 12 screens.
+
+
+## Included features
+- GitHub Pages-ready static website
+- Responsive mobile menu
+- Multi-screen YouTube video wall with muted playback
+- Paste-a-YouTube-link single-video viewer
+- Flag Country Area Subscribe button
+- AI Toon World and Flag Country Area channel cards
+- Responsive AdSense placeholder areas
+
+Replace AdSense placeholders only with the official code supplied after Google approves your site.

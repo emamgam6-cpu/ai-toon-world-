@@ -49,3 +49,35 @@ document.querySelectorAll(".nav nav a").forEach(a=>a.addEventListener("click",()
 }));
 document.getElementById("channelGrid").innerHTML=channels.map(c=>`<article class="channel"><div class="avatar">${esc(c.icon)}</div><h3>${esc(c.name)}</h3><p>${esc(c.handle)}</p><a href="${safe(c.url)}" target="_blank" rel="noopener">Open Channel ↗</a></article>`).join("");
 renderWall();
+
+
+function getYoutubeId(rawUrl){
+  try{
+    const u=new URL(rawUrl.trim());
+    const host=u.hostname.replace(/^www\./,'').toLowerCase();
+    if(host==='youtu.be') return u.pathname.split('/').filter(Boolean)[0] || '';
+    if(host==='youtube.com' || host==='m.youtube.com'){
+      if(u.pathname==='/watch') return u.searchParams.get('v') || '';
+      if(u.pathname.startsWith('/shorts/')) return u.pathname.split('/')[2] || '';
+      if(u.pathname.startsWith('/embed/')) return u.pathname.split('/')[2] || '';
+      if(u.pathname.startsWith('/live/')) return u.pathname.split('/')[2] || '';
+    }
+  }catch(e){}
+  return '';
+}
+function openYoutubeLink(){
+  const input=document.getElementById('youtubeUrl');
+  const frame=document.getElementById('singleVideo');
+  const wrap=document.getElementById('singleVideoWrap');
+  const error=document.getElementById('linkError');
+  const id=getYoutubeId(input.value);
+  error.textContent='';
+  if(!id){ wrap.hidden=true; error.textContent='Please paste a valid YouTube video link.'; return; }
+  frame.src='https://www.youtube.com/embed/'+encodeURIComponent(id)+'?autoplay=1&mute=1&playsinline=1&rel=0';
+  wrap.hidden=false;
+  wrap.scrollIntoView({behavior:'smooth',block:'center'});
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  const input=document.getElementById('youtubeUrl');
+  if(input) input.addEventListener('keydown',e=>{if(e.key==='Enter') openYoutubeLink();});
+});
