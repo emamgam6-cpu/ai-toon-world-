@@ -13,8 +13,7 @@ const videos=[
 {title:"Video 12",channel:"AI Toon World",url:"https://www.youtube.com/watch?v=dQw4w9WgXcQ"}];
 const channels=[
 {name:"AI Toon World",handle:"@AIToonWorld",icon:"AI",url:"https://www.youtube.com/"},
-{name:"Drama Club",handle:"@DramaClub",icon:"DC",url:"https://www.youtube.com/"},
-{name:"Flag Country Area",handle:"@FlagCountryArea",icon:"FC",url:"https://www.youtube.com/"}];
+{name:"Flag Country Area",handle:"@flagcountryarea",icon:"FC",url:"https://youtube.com/@flagcountryarea?si=OnhGSL46fyZq3FTn"}];
 
 function idFromUrl(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);return u.searchParams.get("v")||""}catch(e){return""}}
 function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
@@ -32,6 +31,21 @@ function post(i,func,args=[]){const f=document.getElementById("player"+i);if(f)f
 function startAll(){document.querySelectorAll(".screen iframe").forEach((f,i)=>post(i,"mute"));document.querySelectorAll(".screen iframe").forEach((f,i)=>post(i,"playVideo"))}
 function stopAll(){document.querySelectorAll(".screen iframe").forEach((f,i)=>post(i,"pauseVideo"))}
 function toggleMute(i,btn){const muted=btn.dataset.muted!=="false";if(muted){post(i,"unMute");btn.dataset.muted="false";btn.textContent="🔊"}else{post(i,"mute");btn.dataset.muted="true";btn.textContent="🔇"}}
-function toggleMenu(){document.querySelector("nav").classList.toggle("mobile")}
+function toggleMenu(){
+  const nav=document.querySelector(".nav nav");
+  const btn=document.getElementById("menuBtn");
+  const open=nav.classList.toggle("mobile");
+  btn.setAttribute("aria-expanded",String(open));
+  btn.setAttribute("aria-label",open?"Close menu":"Open menu");
+  btn.textContent=open?"✕":"☰";
+}
+document.querySelectorAll(".nav nav a").forEach(a=>a.addEventListener("click",()=>{
+  const nav=document.querySelector(".nav nav");
+  const btn=document.getElementById("menuBtn");
+  nav.classList.remove("mobile");
+  btn.setAttribute("aria-expanded","false");
+  btn.setAttribute("aria-label","Open menu");
+  btn.textContent="☰";
+}));
 document.getElementById("channelGrid").innerHTML=channels.map(c=>`<article class="channel"><div class="avatar">${esc(c.icon)}</div><h3>${esc(c.name)}</h3><p>${esc(c.handle)}</p><a href="${safe(c.url)}" target="_blank" rel="noopener">Open Channel ↗</a></article>`).join("");
 renderWall();
